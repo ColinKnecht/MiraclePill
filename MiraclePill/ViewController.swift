@@ -19,8 +19,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.viewDidLoad()
         statePicker.dataSource = self
         statePicker.delegate = self
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +42,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return states[row]
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        statePickerBtn.setTitle(states[row], forState: <#T##UIControlState#>)//should be UIControlState.application
+        statePickerBtn.setTitle(states[row], forState: <#T##UIControlState#>)//should be UIControlState.normal
         statePicker.accessibilityElementsHidden = true
     }
 
