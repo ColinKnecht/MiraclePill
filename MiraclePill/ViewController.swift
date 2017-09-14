@@ -13,11 +13,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var statePickerBtn: UIButton!
     
+    let states =  ["Alaska", "Arkansas", "Alabama", "California", "Maine", "Ohio"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        statePicker.dataSource = self
+        statePicker.delegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
-    
         
     }
 
@@ -27,6 +29,23 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
 
     @IBAction func stateBtnPressed(sender: AnyObject) {
+        statePicker.accessibilityElementsHidden = false //teachers is statePicker.isHidden
+        
+        
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 0
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return states.count
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return states[row]
+    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        statePickerBtn.setTitle(states[row], forState: <#T##UIControlState#>)//should be UIControlState.application
+        statePicker.accessibilityElementsHidden = true
     }
 
 }
